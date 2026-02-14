@@ -1,0 +1,256 @@
+===============================================================================
+TOPIC: PRIMITIVE vs NON-PRIMITIVE DATA TYPES IN JAVA
+===============================================================================
+
+SECTION 1: BASIC DEFINITIONS
+-------------------------------------------------------------------------------
+
+1) PRIMITIVE DATA TYPES
+-----------------------
+- Store actual raw value directly.
+- Not objects.
+- Fixed memory size.
+- Faster because no object creation.
+- Cannot call methods.
+- Cannot be null.
+- Stored directly in stack (local variables).
+
+Example:
+int x = 10;
+boolean flag = true;
+
+x stores 10 directly.
+
+
+2) NON-PRIMITIVE DATA TYPES (REFERENCE TYPES)
+---------------------------------------------
+- Store memory address (reference) to an object.
+- Objects are stored in heap memory.
+- Variable holds reference to heap object.
+- Can call methods.
+- Can be null.
+- Size depends on object.
+
+Example:
+String s = "Java";
+int[] arr = new int[5];
+
+s stores reference to String object.
+arr stores reference to array object.
+
+
+===============================================================================
+SECTION 2: LIST OF PRIMITIVE TYPES
+-------------------------------------------------------------------------------
+
+There are 8 primitive types in Java:
+
+1) byte      -> 1 byte
+2) short     -> 2 bytes
+3) int       -> 4 bytes
+4) long      -> 8 bytes
+5) float     -> 4 bytes
+6) double    -> 8 bytes
+7) char      -> 2 bytes
+8) boolean   -> JVM dependent
+
+Example:
+int a = 5;
+double d = 3.14;
+char c = 'A';
+
+
+===============================================================================
+SECTION 3: MEMORY DIFFERENCE
+-------------------------------------------------------------------------------
+
+PRIMITIVE MEMORY MODEL
+----------------------
+int a = 10;
+
+Stack:
+a = 10
+
+Value stored directly.
+
+
+NON-PRIMITIVE MEMORY MODEL
+--------------------------
+String s = "Java";
+
+Stack:
+s = 0x100 (address)
+
+Heap:
+0x100 -> "Java"
+
+Variable stores address of object.
+
+
+===============================================================================
+SECTION 4: COPYING BEHAVIOR
+-------------------------------------------------------------------------------
+
+PRIMITIVE COPY
+--------------
+int a = 10;
+int b = a;
+b = 20;
+
+Result:
+a = 10
+b = 20
+
+Reason:
+Value copied separately.
+
+
+NON-PRIMITIVE COPY
+------------------
+String s1 = "Java";
+String s2 = s1;
+
+Both point to same object in heap.
+
+If object is mutable and changed, both see change.
+
+
+===============================================================================
+SECTION 5: DEFAULT VALUES
+-------------------------------------------------------------------------------
+
+Primitive Default Values (for instance variables):
+
+byte    -> 0
+short   -> 0
+int     -> 0
+long    -> 0L
+float   -> 0.0f
+double  -> 0.0
+char    -> '\u0000'
+boolean -> false
+
+Non-Primitive Default Value:
+null
+
+
+Example:
+class Test {
+    int x;        // 0
+    String name;  // null
+}
+
+
+===============================================================================
+SECTION 6: METHOD PASSING BEHAVIOR
+-------------------------------------------------------------------------------
+
+Java is PASS-BY-VALUE.
+
+PRIMITIVE:
+-----------
+int a = 10;
+change(a);
+
+Original value not modified.
+
+Because copy of value is passed.
+
+
+NON-PRIMITIVE:
+---------------
+Student s = new Student();
+change(s);
+
+Object can be modified.
+
+Because copy of reference still points to same object.
+
+
+===============================================================================
+SECTION 7: WRAPPER CLASSES
+-------------------------------------------------------------------------------
+
+Each primitive has corresponding wrapper class:
+
+int     -> Integer
+double  -> Double
+char    -> Character
+boolean -> Boolean
+byte    -> Byte
+short   -> Short
+long    -> Long
+float   -> Float
+
+Example:
+Integer x = 10;   (Autoboxing)
+int y = x;        (Unboxing)
+
+Wrapper classes are objects.
+Stored in heap.
+Slower than primitives.
+
+
+===============================================================================
+SECTION 8: IMPORTANT DIFFERENCES
+-------------------------------------------------------------------------------
+
+Primitive vs Non-Primitive
+
+Primitive:
+- Stores value
+- Fixed size
+- Faster
+- Cannot be null
+- No methods
+
+Non-Primitive:
+- Stores reference
+- Variable size
+- Slower
+- Can be null
+- Can call methods
+
+
+===============================================================================
+SECTION 9: IMPORTANT INTERVIEW POINTS
+-------------------------------------------------------------------------------
+
+1) Why primitive cannot be null?
+   Because they store actual value directly.
+
+2) Why String can be null?
+   Because it is reference type.
+
+3) Why Integer slower than int?
+   Because:
+   - Object creation
+   - Heap allocation
+   - Autoboxing/unboxing overhead
+
+4) Difference between == for primitives and objects?
+   - Primitive: compares value
+   - Object: compares reference (unless overridden)
+
+
+===============================================================================
+SECTION 10: FINAL SUMMARY
+-------------------------------------------------------------------------------
+
+Primitive:
+- Value stored directly
+- Stack
+- Fast
+- No methods
+- Cannot be null
+
+Non-Primitive:
+- Reference stored
+- Object in heap
+- Slower
+- Has methods
+- Can be null
+
+===============================================================================
+END OF NOTES
+===============================================================================
